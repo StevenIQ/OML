@@ -20,8 +20,8 @@ def split_dataset(dataset: pd.DataFrame, test_ratio: float) -> Dict[str, Any]:
     """
     Splits dataset into a training set and a test set.
     """
-    X = dataset.drop("purchased", axis=1)
-    y = dataset["purchased"]
+    X = dataset.drop("y", axis=1)
+    y = dataset["ID","y"]
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=test_ratio, random_state=40
