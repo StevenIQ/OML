@@ -5,7 +5,7 @@ from typing import Callable, Tuple, Any, Dict
 
 
 from sklearn.base import BaseEstimator
-from sklearn.metrics import f1_score
+from sklearn.metrics import mean_squared_error as MSE
 from sklearn.model_selection import RepeatedKFold
 from xgboost import XGBRegressor
 from hyperopt import hp, tpe, fmin
@@ -27,15 +27,13 @@ MODELS = [
             'subsample': hp.quniform('subsample', 0.5, 1, 0.05),
             'gamma': hp.quniform('gamma', 0.5, 1, 0.05),
             'colsample_bytree': hp.quniform('colsample_bytree', 0.5, 1, 0.05),
-            'eval_metric': 'auc',
-            'objective': 'binary:logistic',
+            # 'eval_metric': 'auc',
+            'objective': 'survival:cox',
             # Increase this number if you have more cores. Otherwise, remove it and it will default
             # to the maxium number.
             'nthread': 4,
             'booster': 'gbtree',
             'tree_method': 'exact',
-            'silent': 1
-
             # "objective": "binary",
             # "verbose": 0,
             # # 'enable_categorical':"True",
@@ -54,8 +52,8 @@ MODELS = [
             # # "reg_lambda": hp.choice("reg_lambda", [0, 1e-1, 1, 2, 5, 10]),
         },
         "override_schemas": {
-            "min_child_weight": int,
             "max_depth": int,
+            "n_estimators": int,
         },
     }
 ]
@@ -134,7 +132,7 @@ def auto_ml(
             model_specs["class"],
             dataset=(X, y),
             search_space=model_specs["params"],
-            metric=lambda x, y: -f1_score(x, y),
+            metric=lambda x, y: -MSE(x, y),
             max_evals=max_evals
         )
         print("done")
@@ -149,7 +147,7 @@ def auto_ml(
                 "model": model,
                 "name": model_specs["name"],
                 "params": optimum_params,
-                "score": f1_score(y_test, model.predict(X_test)),
+                "score": MSE(y_test, model.predict(X_test)),
             }
         )
 

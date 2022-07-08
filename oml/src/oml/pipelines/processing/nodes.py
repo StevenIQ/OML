@@ -36,7 +36,7 @@ def split_dataset(dataset: pd.DataFrame, test_ratio: float) -> Dict[str, Any]:
     Splits dataset into a training set and a test set.
     """
     X = dataset.drop(["y", "date"], axis=1).copy()
-    y = dataset[["ID", "y"]]
+    y = dataset[["y"]]
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=test_ratio, random_state=40
