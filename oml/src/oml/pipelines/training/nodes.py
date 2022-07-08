@@ -22,7 +22,7 @@ MODELS = [
             'eta': hp.quniform('eta', 0.025, 0.5, 0.025),
             # A problem with max_depth casted to float instead of int with
             # the hp.quniform method.
-            'max_depth': hp.choice('max_depth', np.arange(1, 14, dtype=int)),
+            'max_depth':3,
             'min_child_weight': hp.quniform('min_child_weight', 1, 6, 1),
             'subsample': hp.quniform('subsample', 0.5, 1, 0.05),
             'gamma': hp.quniform('gamma', 0.5, 1, 0.05),
