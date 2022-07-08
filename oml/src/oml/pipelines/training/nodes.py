@@ -7,7 +7,7 @@ from typing import Callable, Tuple, Any, Dict
 from sklearn.base import BaseEstimator
 from sklearn.metrics import f1_score
 from sklearn.model_selection import RepeatedKFold
-from xgboost import XGBClassifier
+from xgboost import XGBRegressor
 from hyperopt import hp, tpe, fmin
 
 import warnings
@@ -16,30 +16,46 @@ warnings.filterwarnings('ignore')
 MODELS = [
     {
         "name": "xgboost",
-        "class": XGBClassifier,
+        "class": XGBRegressor,
         "params": {
-            "objective": "binary",
-            "verbose": 0,
-            # 'enable_categorical':"True",
-            'eta':  0.002,
-            "max_depth": 3,
-            "objective": "survival:cox",
-            "subsample": 0.5
-            # "learning_rate": hp.uniform("learning_rate", 0.001, 1),
-            # "num_iterations": hp.quniform("num_iterations", 100, 1000, 20),
-            # "max_depth": hp.quniform("max_depth", 4, 12, 6),
-            # "num_leaves": hp.quniform("num_leaves", 8, 128, 10),
-            # "colsample_bytree": hp.uniform("colsample_bytree", 0.3, 1),
-            # "subsample": hp.uniform("subsample", 0.5, 1),
-            # "min_child_samples": hp.quniform("min_child_samples", 1, 20, 10),
-            # "reg_alpha": hp.choice("reg_alpha", [0, 1e-1, 1, 2, 5, 10]),
-            # "reg_lambda": hp.choice("reg_lambda", [0, 1e-1, 1, 2, 5, 10]),
+            'n_estimators': hp.quniform('n_estimators', 100, 1000, 1),
+            'eta': hp.quniform('eta', 0.025, 0.5, 0.025),
+            # A problem with max_depth casted to float instead of int with
+            # the hp.quniform method.
+            'max_depth': hp.choice('max_depth', np.arange(1, 14, dtype=int)),
+            'min_child_weight': hp.quniform('min_child_weight', 1, 6, 1),
+            'subsample': hp.quniform('subsample', 0.5, 1, 0.05),
+            'gamma': hp.quniform('gamma', 0.5, 1, 0.05),
+            'colsample_bytree': hp.quniform('colsample_bytree', 0.5, 1, 0.05),
+            'eval_metric': 'auc',
+            'objective': 'binary:logistic',
+            # Increase this number if you have more cores. Otherwise, remove it and it will default
+            # to the maxium number.
+            'nthread': 4,
+            'booster': 'gbtree',
+            'tree_method': 'exact',
+            'silent': 1
+
+            # "objective": "binary",
+            # "verbose": 0,
+            # # 'enable_categorical':"True",
+            # 'eta':  0.002,
+            # "max_depth": 3,
+            # "objective": "survival:cox",
+            # "subsample": 0.5
+            # # "learning_rate": hp.uniform("learning_rate", 0.001, 1),
+            # # "num_iterations": hp.quniform("num_iterations", 100, 1000, 20),
+            # # "max_depth": hp.quniform("max_depth", 4, 12, 6),
+            # # "num_leaves": hp.quniform("num_leaves", 8, 128, 10),
+            # # "colsample_bytree": hp.uniform("colsample_bytree", 0.3, 1),
+            # # "subsample": hp.uniform("subsample", 0.5, 1),
+            # # "min_child_samples": hp.quniform("min_child_samples", 1, 20, 10),
+            # # "reg_alpha": hp.choice("reg_alpha", [0, 1e-1, 1, 2, 5, 10]),
+            # # "reg_lambda": hp.choice("reg_lambda", [0, 1e-1, 1, 2, 5, 10]),
         },
         "override_schemas": {
-            "num_leaves": int,
-            "min_child_samples": int,
+            "min_child_weight": int,
             "max_depth": int,
-            "num_iterations": int,
         },
     }
 ]

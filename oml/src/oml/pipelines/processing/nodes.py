@@ -26,6 +26,7 @@ def encode_features(dataset: pd.DataFrame) -> pd.DataFrame:
         if label == "sex_isFemale":
             features[label] = features[label].astype(bool)
 
+
     
     return dict(features=features, transform_pipeline=encoders)
 
@@ -34,7 +35,7 @@ def split_dataset(dataset: pd.DataFrame, test_ratio: float) -> Dict[str, Any]:
     """
     Splits dataset into a training set and a test set.
     """
-    X = dataset.drop("y", axis=1).copy()
+    X = dataset.drop(["y", "date"], axis=1).copy()
     y = dataset[["ID", "y"]]
 
     X_train, X_test, y_train, y_test = train_test_split(
