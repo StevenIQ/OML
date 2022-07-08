@@ -16,9 +16,9 @@ COPY requirements.txt /app/requirements.txt
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app.py /app/app.py
-COPY src/ /app/src/
-COPY conf/key.json /app/conf/key.json
+COPY app/app.py /app/app.py
+COPY app/src/ /app/src/
+COPY app/conf/key.json /app/conf/key.json
 
 # On ouvre et expose le port 80
 EXPOSE 80

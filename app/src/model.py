@@ -28,13 +28,13 @@ class Model():
         self.transform_pipeline = joblib.load(pipeline_path)
 
     def predict(self, X):
-        if self.model:
-            if self.transform_pipeline:
-                for name, encoder in self.transform_pipeline:
-                    X[name] = X[name].fillna("unknown")
-                    X[name] = encoder.transform(X[name])
-            for col in ["user_id", "user_session", "purchased"]:
-                if col in X:
-                    X = X.drop(col, axis=1)
-            return self.model.predict(X)
+        # if self.model:
+        #     if self.transform_pipeline:
+        #         for name, encoder in self.transform_pipeline:
+        #             X[name] = X[name].fillna("unknown")
+        #             X[name] = encoder.transform(X[name])
+        #     for col in ["user_id", "user_session", "purchased"]:
+        #         if col in X:
+        #             X = X.drop(col, axis=1)
+        #     return self.model.predict(X)
         return None
