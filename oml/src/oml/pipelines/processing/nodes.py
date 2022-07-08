@@ -23,7 +23,10 @@ def encode_features(dataset: pd.DataFrame) -> pd.DataFrame:
         encoder = LabelEncoder()
         features.loc[:, label] = encoder.fit_transform(features.loc[:, label].copy())
         encoders.append((label, encoder))
+        if label == "sex_isFemale":
+            features[label] = features[label].astype(bool)
 
+    
     return dict(features=features, transform_pipeline=encoders)
 
 
