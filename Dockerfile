@@ -1,8 +1,8 @@
 FROM python:3.8-slim
 
+# Indispensable pour LightGBM
 RUN apt update
-# Nécessaire pour charger le modèle
-RUN apt-get install libgomp1 -y
+RUN apt install libgomp1 -y
 
 # Mise à jour de pip3
 RUN pip install --upgrade pip
@@ -12,15 +12,18 @@ RUN mkdir /app
 
 WORKDIR /app
 
-COPY requirements.txt /app/
-COPY app.py /app/
-COPY src/ /app/src/
+COPY requirements.txt /app/requirements.txt
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# On ouvre et expose le port
-EXPOSE $PORT
+COPY app.py /app/app.py
+COPY src/ /app/src/
+COPY conf/key.json /app/conf/key.json
+
+# On ouvre et expose le port 80
+EXPOSE 80
 
 # Lancement de l'API
 # Attention : ne pas lancer en daemon !
-CMD exec gunicorn -b :$PORT -w 4 app:app
+#CMD ["flask", "run", "--host", "0.0.0.0", "--port", "80"]
+CMD ["gunicorn", "app:app", "-b", "0.0.0.0:80", "-w", "4"]
