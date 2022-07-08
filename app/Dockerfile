@@ -25,5 +25,5 @@ EXPOSE 80
 
 # Lancement de l'API
 # Attention : ne pas lancer en daemon !
-#CMD ["flask", "run", "--host", "0.0.0.0", "--port", "80"]
-CMD ["gunicorn", "app:app", "-b", "0.0.0.0:80", "-w", "4"]
+CMD ["flask", "run", "--host", "0.0.0.0", "--port", "80"]
+# CMD ["gunicorn", "app:app", "-b", "0.0.0.0:80", "-w", "4"]
