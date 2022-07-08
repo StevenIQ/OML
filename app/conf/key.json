@@ -1,0 +1,12 @@
+{
+    "type": "service_account",
+    "project_id": "blent-303121",
+    "private_key_id": "85e2c18faaf8a3f1d803ab0252099590882253b2",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDcu5/me2Yx0tQM\nHeKk6SUjb/BlqG7PTsUWMF7L4B7ro8LYpWutuBeOoD7mOBmxcQoKTreOlaRLOmOh\nPrV7hoUq+OhYG21diyrWNupyXKnLvvyv/ot8SqRd3/jD+1M76w81xANxydAcKGFq\noBNk1T0YHJAekvqEyMPqffYuGQxQCsCihadlT3YaYOonQNcRDycFPONDeH/jHuI3\nE5oXlHx+pH6v0fCDOR7uo0cTH48aXuH4mq2QXHq2SWv0cBWWEicVObFo2M6Rp++R\nTrxOLzyUH7iKW+rLVo4kVSXcIKGYx61Ujph9F1vu/aI0YlAh9gyF5JGVjMSP+NSa\nYuaqc29JAgMBAAECggEAAOtjKiGfdlureHVzaT5zYidoN/QwqfppBcOj0XOYjWC8\nQgzGWw3mQzjVqj3XlY6j/REA4L4s1gdjPNu3A9G2okwxI5TRqs8WmZfW+Cz8pBWi\nldUYnabt8lopfh+A5EIBaTbs0L+Hd2aPqVMLYaMlwwDzdL0mAAGaF1L5AI4oJ/kx\ngk4+/yCbYg55xZCwSZdE7iBa+vdNsSnQ/bgGABoF1A0KjF6V8taVmNos8Qhff2nH\nHzfCBavP8m0N/Q3PElVOA81tiqT1s7B748daqSQRYSq2PwyKoBb3rTnmIpdfYWXc\nzX50Lo6YtR2SOdCiGX/zf8wm/SKHI4y2Nam+L4or1QKBgQD8jeRcuKIgdjgZIqqw\nllXJOz9wydAQut1bzgbPYkbTlwcqXacg1uOHOY+T6G9phUJnj8XZAUTWmvwcjsLJ\nPXSJeNOTswQt+2a+s8rIIzQxHFddC9y8st9Ue5PpcbOwPDqjIIzsMk+lERnpFF7W\nvOBF8o6w6tsCv+YDJPzYYuV2twKBgQDfvpaxeXlH5A64mUD0hIRdawL5NPAFsaAX\nQabXuBhGX8Qm7MRM7mnQf9bw3I/EQlUthRNu4cSKkIQ/Wp09NZEZSma7LlPVbcIN\n7EpXGlskkQP8EetTA0eewJiTKi8URdFOUrYFXb4WyP+I8FJS0sBxelf0FvyEyaZE\ncqFGRzhJ/wKBgHnX8u6Q3RcQMexefz8GqIiXHvpJQypvHNBny31OCqGWYYyc9j6v\nrcHVkWFoaCfedLUF9gvFwvJOf4c/kNYJ4ilYs6q0WTXd7infD9wSr+FprPRk/q/D\nFF/r5uZfRrOluxxsXdCuTSJz5649d6veH81fQlw0Ukk3T78An0O+IrptAoGAKbdE\nK2TFmwTHRd21AaHvd+dqz4HyOm2KtqtT6yZ0yDI0xTkhxGIzMl+TeKb22xWvAeSs\n4eCQH3GgZpuDc5UYL4nyq3WQxdtH8gabObA9TA0JnCbPJFQZN10bVVzpGDOIOb0s\nGMYImgDxu9tqzexjWwT/fxAGFs/uAxcIQK0orosCgYEArsd4Ddlwzvcac4bFcoKv\ne/5g/Km9QCZYXuopB1Z/el/U/fG/dckTeG9jtX8wW+Z+Wc0D3cOjZ277kg80RYyB\nXD6/kAS8BA2zKJBZKcoH4BbyZtdaoWJmYgQ0d86MQhERoVCSbWOGCn+bcL3RlIUK\ne0UTaLmjhIoHYJDdeP7JJMI=\n-----END PRIVATE KEY-----\n",
+    "client_email": "kedro-esgi-mlops@blent-303121.iam.gserviceaccount.com",
+    "client_id": "104797301119536618487",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/kedro-esgi-mlops%40blent-303121.iam.gserviceaccount.com"
+  }
