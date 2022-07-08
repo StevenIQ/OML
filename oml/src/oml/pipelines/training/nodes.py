@@ -22,16 +22,13 @@ MODELS = [
             'eta': hp.quniform('eta', 0.025, 0.5, 0.025),
             # A problem with max_depth casted to float instead of int with
             # the hp.quniform method.
-            'max_depth': hp.choice('max_depth', np.arange(1, 14, dtype=int)),
+            'max_depth':3,
             'min_child_weight': hp.quniform('min_child_weight', 1, 6, 1),
             'subsample': hp.quniform('subsample', 0.5, 1, 0.05),
             'gamma': hp.quniform('gamma', 0.5, 1, 0.05),
             'colsample_bytree': hp.quniform('colsample_bytree', 0.5, 1, 0.05),
             'eval_metric': 'auc',
-            'objective': 'binary:logistic',
-            # Increase this number if you have more cores. Otherwise, remove it and it will default
-            # to the maxium number.
-            'nthread': 4,
+            'objective': 'survival:cox',
             'booster': 'gbtree',
             'tree_method': 'exact',
             'silent': 1
@@ -56,6 +53,7 @@ MODELS = [
         "override_schemas": {
             "min_child_weight": int,
             "max_depth": int,
+            "n_estimators": int
         },
     }
 ]

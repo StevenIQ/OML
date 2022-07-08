@@ -25,8 +25,6 @@ def encode_features(dataset: pd.DataFrame) -> pd.DataFrame:
         encoders.append((label, encoder))
         if label == "sex_isFemale":
             features[label] = features[label].astype(bool)
-
-
     
     return dict(features=features, transform_pipeline=encoders)
 
