@@ -1,0 +1,11 @@
+# Liste des Cloud Builders : https://console.cloud.google.com/gcr/images/cloud-builders/GLOBAL
+steps:
+- name: "gcr.io/cloud-builders/docker"
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/oml-api:$SHORT_SHA', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/oml-api:$SHORT_SHA']
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'oml-api', '--image', 'gcr.io/$PROJECT_ID/oml-api:$SHORT_SHA', '--region', 'europe-west1', '--platform', 'managed']
+images:
+- gcr.io/$PROJECT_ID/oml-api:$SHORT_SHA
